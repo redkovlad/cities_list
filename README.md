@@ -1,4 +1,12 @@
-# cities_list
+# cities list
+
+## Описание
+
+Простое приложение на Vue.js, представляющее собой копию логики фильтрации списка городов со страницы:
+<br/>
+https://fitauto.ru/cities/
+<br/>
+По клику на название города через vue-router сделан роутинг компонента списка станций конкретного города.
 
 ## Project setup
 ```
@@ -9,11 +17,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
