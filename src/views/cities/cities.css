@@ -1,0 +1,57 @@
+.countries{
+	display: flex;
+	flex-flow: row;
+	justify-content: flex-start;
+	margin: 15px 0;
+}
+.country{
+	position: relative;
+	font-size: 24px;
+	line-height: 35px;
+	color: #9e9e9f;
+	cursor: pointer;
+}
+.country+.country{
+	margin-left: 35px;
+}
+.country:after{
+	content: '';
+	position: absolute;
+	width: 100%;
+	bottom: 4px;
+	left: 0;
+	height: 2px;
+	background-color: rgba(158,158,159,0.2);
+}
+.country__active{
+	color: white;
+}
+.country__active:after{
+	content: none;
+}
+.citiesList{
+	columns: 300px 4;
+}
+.citiesLetter{
+	display: inline-flex;
+	flex-flow: row;
+	min-width: 300px;
+}
+.letter{
+	width: 30px;
+	color: #f47d32;
+	font-size: 20px;
+	line-height: 30px;
+}
+.cities{
+	font-size: 15px;
+	line-height: 30px;
+}
+.city{
+	cursor: pointer;	
+}
+@media(max-width: 720px){
+.citiesList{
+	columns:150px 4;
+}
+}
