@@ -10,11 +10,22 @@ export interface station {
 	title:string
 }
 
+export type countryName = 'Россия'|'Казахстан';
 export type countryCode = "ru" | "kz";
+export enum countryNameDictionary {
+	"Россия" = "ru",
+	"Казахстан" = "kz"
+}
+
+export interface country{
+	title:string,
+	code:countryCode
+}
 
 export type cityLetterContainer = Record<string,Array<city>>
 
 export interface citiesDataInterface {
 	cities:Map<string,city>; //{id_города : город}
-	countries:Record<countryCode,cityLetterContainer>; //{ru:{'A':[{title:'Абакан'}]}}
+	countries:Map<string, country>; //{Название : страна}
+	citiesByCountries:Record<countryCode,cityLetterContainer>; //{ru:{'A':[{title:'Абакан'}]}}
 }

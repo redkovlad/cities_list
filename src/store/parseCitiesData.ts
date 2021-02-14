@@ -1,38 +1,43 @@
 import RawCitiesData from '@/assets/cities.json';
-import { city, station, countryCode, cityLetterContainer, citiesDataInterface } from '@/interfaces/citiesData'
+import { 
+	city,
+	station,
+	country,
+	countryName,
+	countryCode,
+	countryNameDictionary,
+	cityLetterContainer,
+	citiesDataInterface } from '@/interfaces/citiesData'
+
 
 const 
 	citiesData:citiesDataInterface={
 		cities:new Map() as Map<string,city>, //города по id
-		countries:{
-			ru:{}, //ссылки на города из cities разбитые на массивы по буквам
-			kz:{},			
-		}
+		countries:new Map() as Map<string,country>, //cтраны по названию
+		citiesByCountries:{} as Record<countryCode,cityLetterContainer>  //ссылки на города из cities разбитые на массивы по буквам
+		
 	},
 	citiesLetters=new Set<string>();
 
 
-type countryName = 'Россия'|'Казахстан';
-
-const countryNameDictionary:Record<countryName,countryCode>={
-	'Россия':'ru',	
-	'Казахстан':'kz',	
+for (const prop  in countryNameDictionary){ //заполнение данных по странам
+	const code = countryNameDictionary[prop as countryName];
+	citiesData.countries.set(prop,{
+		title:prop,
+		code:code
+	})
+	citiesData.citiesByCountries[code] = {};
 }
+
 
 RawCitiesData.forEach(c=>{
 	citiesData.cities.set(c.id,c);
 
 	const 
-		rawCityCountryName:countryName = c.country as countryName,
-		countryCode:countryCode = countryNameDictionary[rawCityCountryName];
+		countryCode:countryCode = countryNameDictionary[c.country as countryName],
+		countryArray:cityLetterContainer = citiesData.citiesByCountries[countryCode];
 
-	if(countryCode){ //с текущими данными сработает всегда, но...
-		const country:cityLetterContainer = citiesData.countries[countryCode];
-
-		if(country)
-			pushCityToLetterContainer(c,country);
-	}
-
+	pushCityToLetterContainer(c,countryArray);
 });
 
 function pushCityToLetterContainer( city:city, arr:cityLetterContainer ){

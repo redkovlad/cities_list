@@ -7,7 +7,7 @@ export default defineComponent({
 	name:'cities',
 	data(){
 		return {
-			country:'ru' as countryCode,
+			currentCountry:'ru' as countryCode,
 			citiesData:this.$store.state.citiesData as citiesDataInterface, //список городов + их деление на страны
 			searchBarModel:'', //модель содержимого поискового инпута
 			searchLetter:'',  //либо выбранная по клику на букву, либо первый символ инпута
@@ -21,8 +21,8 @@ export default defineComponent({
 		console.log(this.citiesData);
 	},
 	methods:{
-		setCountry(country:countryCode){
-			this.country = country;
+		setCurrentCountry(country:countryCode){
+			this.currentCountry = country;
 		},
 		searchBarHandler(value:string){ //обработчик поискового инпута
 			if(value.length==0){
@@ -41,7 +41,7 @@ export default defineComponent({
 		getCitiesLetters():cityLetterContainer{
 			//вывод списка городов в зависимости от выбранной страны, буквы, данных поискового инпута
 			const 
-				countryData:cityLetterContainer = this.citiesData.countries[this.country],
+				countryData:cityLetterContainer = this.citiesData.citiesByCountries[this.currentCountry],
 				citiesByLetter = countryData[this.searchLetter];
 			
 			if (!citiesByLetter){ //По первой букве с инпута нет городов - вернет все города страны
@@ -62,6 +62,9 @@ export default defineComponent({
 				return result;
 			}
 
+		},
+		getCountries(){
+			return this.citiesData.countries.values();
 		}
-	}
+	},
 })

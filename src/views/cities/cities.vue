@@ -3,8 +3,8 @@
 	<header-letters @letterClicked="letterClickHandler" :searchLetter="searchLetter"></header-letters>
 	<searchbar @valueChange="searchBarHandler" :value='searchBarModel' ref="searchbar"></searchbar>
 	<div class="countries">
-		<div :class="[country=='ru'?'country__active':'','country']" @click="setCountry('ru')">Россия</div>
-		<div :class="[country=='kz'?'country__active':'','country']" @click="setCountry('kz')">Казахстан</div>
+
+		<div v-for="country of getCountries()" :key="country" :class="['country',currentCountry==country.code?'country__active':'']" @click="setCurrentCountry(country.code)">{{country.title}}</div>
 	</div>
 	<div class="citiesList">
 		<div class="citiesLetter" v-for="(cities,letter) of getCitiesLetters()" :key="letter">
