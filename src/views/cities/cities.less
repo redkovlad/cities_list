@@ -1,6 +1,5 @@
 .countries{
 	display: flex;
-	flex-flow: row;
 	justify-content: flex-start;
 	margin: 15px 0;
 }
@@ -10,31 +9,32 @@
 	line-height: 35px;
 	color: #9e9e9f;
 	cursor: pointer;
+	&.active{
+		color: white;
+	}
+	&:after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		bottom: 4px;
+		left: 0;
+		height: 2px;
+		background-color: rgba(158,158,159,0.2);
+	}
+	&.active:after{
+		content: none;
+	}
+	&+.country{
+		margin-left: 35px;
+	}
 }
-.country+.country{
-	margin-left: 35px;
-}
-.country:after{
-	content: '';
-	position: absolute;
-	width: 100%;
-	bottom: 4px;
-	left: 0;
-	height: 2px;
-	background-color: rgba(158,158,159,0.2);
-}
-.country__active{
-	color: white;
-}
-.country__active:after{
-	content: none;
-}
+
+
 .citiesList{
 	columns: 300px 4;
 }
 .citiesLetter{
-	display: inline-flex;
-	flex-flow: row;
+	display: inline-flex;;
 	min-width: 300px;
 }
 .letter{

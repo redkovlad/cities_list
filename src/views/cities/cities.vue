@@ -4,7 +4,7 @@
 	<searchbar @valueChange="searchBarHandler" :value='searchBarModel' ref="searchbar"></searchbar>
 	<div class="countries">
 
-		<div v-for="country of getCountries()" :key="country" :class="['country',currentCountry==country.code?'country__active':'']" @click="setCurrentCountry(country.code)">{{country.title}}</div>
+		<div v-for="country of getCountries()" :key="country" :class="['country',currentCountry==country.code?'active':'']" @click="setCurrentCountry(country.code)">{{country.title}}</div>
 	</div>
 	<div class="citiesList">
 		<div class="citiesLetter" v-for="(cities,letter) of getCitiesLetters()" :key="letter">
@@ -17,4 +17,4 @@
 </template>
 
 <script lang="ts" src="./cities.ts"></script>
-<style lang="css" scoped src="./cities.css"></style>
+<style lang="less" scoped src="./cities.less"></style>

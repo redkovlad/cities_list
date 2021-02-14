@@ -40,7 +40,7 @@
 		}
 	})
 </script>
-<style scoped>
+<style scoped lang="less">
 	.stations{
 		font-size: 15px;
 		line-height: 30px;

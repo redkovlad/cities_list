@@ -17,12 +17,24 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .searchbar{
 	position: relative;
 	margin:15px 0;
 	width:100%;
 	max-width:500px;
+	&:after{
+		content:'';
+		position: absolute;
+		right:15px;
+		top:0;
+		bottom:0;
+		margin:auto 0;
+		width:16px;
+		height:24px;
+		transform:rotate(45deg);
+		background:url('../assets/img/inputSearch.png') no-repeat center;
+	}
 }
 .searchInput{
 	width:100%;
@@ -36,18 +48,6 @@
 	padding: 0 15px;
 	text-overflow: ellipsis;
 	box-sizing:border-box;
-}
-.searchbar:after{
-	content:'';
-	position: absolute;
-	right:15px;
-	top:0;
-	bottom:0;
-	margin:auto 0;
-	width:16px;
-	height:24px;
-	transform:rotate(45deg);
-	background:url('../assets/img/inputSearch.png') no-repeat center;
 }
 </style>
 

@@ -31,10 +31,9 @@
 		emits:['letterClicked']
 	})
 </script>
-<style scoped>
+<style scoped lang="less">
 	.headerLetters{
 		display:flex;
-		flex-flow:row;
 		flex-wrap:wrap;
 		margin:30px -5px 15px -22px;
 	}
@@ -45,13 +44,13 @@
 		cursor: pointer;
 		transition: color 200ms linear;
 		user-select: none;
-	}
-	.headerLetter:hover,.headerLetter.active{
-		color:#ef6727;
-	}
-	.headerLetter:not(:first-child){
-		width:20px;
-		text-align: center;
+		&:hover,&.active{
+			color:#ef6727;
+		}
+		&:not(:first-child){
+			width:20px;
+			text-align: center;
+		}
 	}
 	@media (max-width:720px){
 		.headerLetter:first-child{
